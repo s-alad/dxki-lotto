@@ -1,0 +1,95 @@
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    flex-direction: column;
+
+    button {    
+        margin-top: 20px;
+        border: 1px solid white;
+        padding: 6px 10px;
+        border-radius: 5px;
+        color: #f5f5f5;
+        background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+        margin-right: 10px;
+    }
+}
+
+.content {
+    display: flex;
+    .nextdraw, .ticketing {
+        padding: 20px;
+        width: 400px;
+        height: 400px;
+        background-color: #131417;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 14px;
+        }
+
+        .stats, .ticketer {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            .stat {
+                border-radius: 8px;
+                width: 48%;
+                border: 1px solid #272b30;
+                padding: 10px;
+            }
+            .ticket {
+                width: 100%;
+                border-radius: 8px;
+                border: 1px solid #272b30;
+                padding: 10px;
+
+                .price, .detail {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 12px;
+                    margin-bottom: 4px;
+                }
+                .detail {
+                    margin-bottom: 2px;
+                }
+                .buy {
+                    display: flex;
+                    border-radius: 8px;
+                    background-color: black;
+                    padding: 10px;
+                    margin-bottom: 8px;
+                    input {
+                        margin-left: 10px;
+                        width: 100%;
+                        background-color: transparent;
+                        border: none;
+                        color: white;
+                        text-align: end;
+                        outline: none;
+                    }
+                }
+                .purchase {
+                    margin-top: 20px;
+                    width: 100%;
+                    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+                    border-radius: 8px;
+                    padding: 10px;
+                    &:disabled {
+                        background-color: #272b30;
+                    }
+                }
+            }
+        }
+    }
+
+    .ticketing {
+
+    }
+}

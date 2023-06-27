@@ -64,6 +64,8 @@ contract Lottery {
             "Not enough tickets available."
         );
 
+        
+
         for (uint256 i = 0; i < numOfTicketsToBuy; i++) {
             tickets.push(msg.sender);
         }
