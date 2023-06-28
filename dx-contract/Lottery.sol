@@ -64,7 +64,7 @@ contract Lottery {
     function BuyTickets() public payable {
 
         // check if lottery is expired by checking if the current block timestamp is greater than the expiration timestamp
-        require(block.timestamp > expiration, "the lottery expired");
+        /* require(block.timestamp > expiration, "the lottery expired"); */
 
         require(
             msg.value % ticketPrice == 0,

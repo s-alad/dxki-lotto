@@ -218,11 +218,11 @@ export default function Home() {
 					<div className={s.mytickets}>
 						{
 							myTickets && myTickets.map((ticket: any) => {
-								return (
+								return ticket.toString() != "0x0000000000000000000000000000000000000000" ? (
 									<div className={s.myticket}>
 										<div className={s.ticketnumber}>{ticket.toString()}</div>
 									</div>
-								)
+								) : ""
 							})
 						}
 					</div>
