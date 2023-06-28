@@ -1,5 +1,6 @@
 # dxki-lotto
 ## Decentralized Lottery Built on Solidity, Nextjs, Polygon & ThirdWeb
+### (Mumbai testchain)
 
 #### You can deploy it yourself on thirdweb and switch the contract addresses in the code. 
 Currently the contract deployer & admin must pick the winner to reset the lottery.  
