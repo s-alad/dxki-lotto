@@ -45,8 +45,7 @@ contract Lottery {
     }
 
     // return the tickets for a specific address
-    function getTicketsForAddress(address addr) public view returns (address[] memory)
-    {
+    function getTicketsForAddress(address addr) public view returns (address[] memory) {
         address[] memory ticketsForAddress = new address[](tickets.length);
         uint256 counter = 0;
         for (uint256 i = 0; i < tickets.length; i++) {
@@ -63,6 +62,10 @@ contract Lottery {
     }
 
     function BuyTickets() public payable {
+
+        // check if lottery is expired by checking if the current block timestamp is greater than the expiration timestamp
+        require(block.timestamp > expiration, "the lottery expired");
+
         require(
             msg.value % ticketPrice == 0,
             string.concat(
@@ -102,6 +105,7 @@ contract Lottery {
         delete tickets;
         expiration = block.timestamp + duration;
     }
+
     function restartDraw() public isOperator {
         require(tickets.length == 0, "Cannot Restart Draw as Draw is in play");
 
