@@ -74,7 +74,10 @@ export default function Home() {
 
 		console.log("myTickets", myTickets.length);
 
-		if (myTickets.length + quantity > 10) return toast.error("You can only have 10 tickets at a time", { id: notif })
+		let myActualTickets = myTickets.filter((ticket: any) => {
+			return ticket.toString() != "0x0000000000000000000000000000000000000000"
+		})	
+		if (myActualTickets.length + quantity > 10) return toast.error("You can only have 10 tickets at a time", { id: notif })
 
 		try {
 			const data = await BuyTickets(
