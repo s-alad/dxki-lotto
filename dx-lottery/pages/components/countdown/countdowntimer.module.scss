@@ -1,0 +1,21 @@
+.countdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 20px;
+    .time {
+        display: flex;
+        width: 30%;
+        border-radius: 8px;
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        background-color: black;
+        .timevalue {
+            font-size: 26px;
+            font-weight: 700;
+        }
+    }
+}

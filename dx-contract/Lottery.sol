@@ -44,6 +44,20 @@ contract Lottery {
         return tickets;
     }
 
+    // return the tickets for a specific address
+    function getTicketsForAddress(address addr) public view returns (address[] memory)
+    {
+        address[] memory ticketsForAddress = new address[](tickets.length);
+        uint256 counter = 0;
+        for (uint256 i = 0; i < tickets.length; i++) {
+            if (tickets[i] == addr) {
+                ticketsForAddress[counter] = tickets[i];
+                counter++;
+            }
+        }
+        return ticketsForAddress;
+    }
+
     function getWinningsForAddress(address addr) public view returns (uint256) {
         return winnings[addr];
     }

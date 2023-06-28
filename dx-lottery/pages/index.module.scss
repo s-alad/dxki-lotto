@@ -18,10 +18,11 @@
 
 .content {
     display: flex;
-    .nextdraw, .ticketing {
+    justify-content: center;
+    .nextdraw, .ticketing, .balance {
         padding: 20px;
         width: 400px;
-        height: 400px;
+        min-height: 400px;
         background-color: #131417;
         border-radius: 8px;
         display: flex;
@@ -59,6 +60,7 @@
                 .detail {
                     margin-bottom: 2px;
                 }
+                .total {font-weight: 700; font-size: 16px;}
                 .buy {
                     display: flex;
                     border-radius: 8px;
@@ -82,14 +84,55 @@
                     border-radius: 8px;
                     padding: 10px;
                     &:disabled {
-                        background-color: #272b30;
+                        background: #272b30 !important;
                     }
                 }
+            }
+        }
+
+        .mytickets {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .myticket {
+                text-align: center;
+                padding: 2px;
+                border-radius: 8px;
+                border: 1px solid #272b30;
+                font-size: 14px;
+                width: 100%;
+                margin-bottom: 8px;
             }
         }
     }
 
     .ticketing {
 
+    }
+}
+
+.winning {
+    display: flex;
+    justify-content: center;
+    .won {
+        width: 1280px;
+        background-color: #131417;
+        color: white;
+        border-radius: 8px;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+
+        .windetails {
+            display: flex;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 6px 40px;
+            border-radius: 5px;
+            color: #f5f5f5;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+        }
     }
 }
