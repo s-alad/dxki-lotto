@@ -102,7 +102,6 @@ contract Lottery {
         delete tickets;
         expiration = block.timestamp + duration;
     }
-
     function restartDraw() public isOperator {
         require(tickets.length == 0, "Cannot Restart Draw as Draw is in play");
 

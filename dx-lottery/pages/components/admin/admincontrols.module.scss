@@ -1,0 +1,46 @@
+.admin {
+    display: flex;
+    justify-content: center;
+
+    .panel {
+        width: 1280px;
+        background-color: #131417;
+        color: white;
+        border-radius: 8px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+        .commission {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .control {
+                width: 24%;
+                padding: 20px;
+                border-radius: 8px;
+                background-color: black;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border: 1px solid #272b30;
+                transition: 1s ease-in-out;
+                &:hover {
+                    cursor: pointer;
+                    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%)
+                }
+            }
+        }
+    }
+}

@@ -7,6 +7,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    .name {
+        font-size: 32px;
+        font-weight: 700;
+    }
     .actions {
         button {
             border: 1px solid white;

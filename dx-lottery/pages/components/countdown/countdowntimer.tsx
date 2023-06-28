@@ -10,10 +10,12 @@ import {
 
 function CountdownTimer() {
 
-    const { contract, isLoading } = useContract("0x23519D3BC43004a6160297d4D3410Be9b35B1283");
+    const { contract, isLoading } = useContract("0x8d5a6517051Cf55aaec0cc60c2f29F2DcC68C5E0");
     const { data: expiration } = useContractRead(contract, "expiration");
 
-    console.log("expiration", expiration);
+/*     console.log("expiration", expiration);
+    console.log("expiration string", expiration.toString())
+    console.log("expiration date", new Date(expiration * 1000)) */
 
     const renderer = ({ hours, minutes, seconds, completed }: any) => {
         if (completed) {

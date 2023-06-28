@@ -8,16 +8,20 @@ import { ethers } from 'ethers';
 import { useState } from 'react';
 import CountdownTimer from './components/countdown/countdowntimer';
 import toast from 'react-hot-toast';
+import Marquee from 'react-fast-marquee';
+import AdminControls from './components/admin/admincontrols';
 
 
 export default function Home() {
-	const { contract, isLoading } = useContract("0x1411A703aFD7C7B92b06Bf751b17Dba760F59e5f");
+	const { contract, isLoading } = useContract("0x8d5a6517051Cf55aaec0cc60c2f29F2DcC68C5E0");
 
 	const address = useAddress();
 
 	const connectWithMetamask = useMetamask()
 
 	let [quantity, setQuantity] = useState(1);
+
+	const { data: isLotteryOperator } = useContractRead(contract, "lotteryOperator")
 
 	const { data: remainingTickets } = useContractRead(contract,"RemainingTickets");
 
@@ -28,6 +32,10 @@ export default function Home() {
 	const { data: ticketCommission } = useContractRead(contract, "ticketCommission");
 
 	const { data: expiration } = useContractRead(contract, "expiration");
+
+	const { data: lastWinner } = useContractRead(contract, "lastWinner")
+
+	const { data: lastWinnerAmount } = useContractRead(contract, "lastWinnerAmount")
 
 	const { data: myTickets } = useContractRead(contract, "getTicketsForAddress", [address])
 
@@ -96,6 +104,19 @@ export default function Home() {
 
 	return (
 		<main>
+			<div className={s.lastwinning}>
+				<Marquee speed={100}>
+					<div className={s.winning}>
+						<div className={s.last}>LAST WINNER: {lastWinner?.toString()}</div>
+						<div>WINNINGS: {lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())} Matic</div>
+					</div>
+				</Marquee>
+			</div>
+			{
+				isLotteryOperator === address && (
+					<AdminControls />
+				)
+			}
 			<div className={s.content}>
 				<div className={s.nextdraw}>
 					<div className={s.title}>Next Draw</div>
