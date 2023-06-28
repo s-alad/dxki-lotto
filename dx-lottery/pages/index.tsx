@@ -65,14 +65,26 @@ export default function Home() {
 		console.log("quantity", quantity);
 		console.log("ticketCommission", ticketCommission);
 		console.log("PURCHASING")
-
+		console.log((
+					Number(ethers.utils.formatEther(ticketPrice)) * quantity
+				).toString())
 		const notif = toast.loading("Purchasing tickets...")
+
+		//get amount of tickets address currently has
+
+		console.log("myTickets", myTickets.length);
+
+		if (myTickets.length + quantity > 10) return toast.error("You can only have 10 tickets at a time", { id: notif })
 
 		try {
 			const data = await BuyTickets(
 				{
 					overrides: {
-						value: ethers.utils.parseEther((Number(ethers.utils.formatEther(ticketPrice)) * quantity).toString())
+						value: ethers.utils.parseEther(
+							(
+								Number(ethers.utils.formatEther(ticketPrice)) * quantity
+							).toString()
+						)
 					}
 				}
 			);
@@ -117,6 +129,19 @@ export default function Home() {
 					<AdminControls />
 				)
 			}
+			<div className={s.winning}>
+				{
+					myWinnings && myWinnings > 0 && (
+						<div className={s.won}>
+							<div className={s.windetails}>
+								<div className={s.title}>You won! 99% of gamblers quit before they hit it large!</div>
+								<div>Total winnings: {ethers.utils.formatEther(myWinnings.toString())} Matic</div>
+							</div>
+							<button onClick={withdrawWinnings}>Claim</button>
+						</div>
+					)
+				}
+			</div>
 			<div className={s.content}>
 				<div className={s.nextdraw}>
 					<div className={s.title}>Next Draw</div>
@@ -157,13 +182,12 @@ export default function Home() {
 							</div>
 							<div className={s.details}>
 								<div className={`${s.detail} ${s.total}`}>
-									<span>total</span>
+									<span>total price of tix</span>
 									<span>
 										{
-											ticketPrice && remainingTickets && 
+											ticketPrice && remainingTickets &&
 											(
-												Number(ethers.utils.formatEther(ticketPrice.toString())) + 
-												Number(ethers.utils.formatEther(ticketCommission.toString()))
+												Number(ethers.utils.formatEther(ticketPrice.toString()))
 											) * quantity
 										}
 										{' Matic'}
@@ -183,7 +207,7 @@ export default function Home() {
 								onClick={() => {handlePurchase()}}
 							>
 								{
-									ticketPrice && remainingTickets && <div>Buy {quantity} ticket for {Number(ethers.utils.formatEther(ticketPrice.toString())) * quantity} Matic</div>
+									ticketPrice && remainingTickets && <div>Buy {quantity} tickets for {Number(ethers.utils.formatEther(ticketPrice.toString())) * quantity} Matic</div>
 								}
 							</button>
 						</div>
@@ -203,19 +227,6 @@ export default function Home() {
 						}
 					</div>
 				</div>
-			</div>
-			<div className={s.winning}>
-				{
-					myWinnings && myWinnings > 0 && (
-						<div className={s.won}>
-							<div className={s.windetails}>
-								<div className={s.title}>You won!</div>
-								<div>Total winnings: {ethers.utils.formatEther(myWinnings.toString())} Matic</div>
-							</div>
-							<button onClick={withdrawWinnings}>Claim</button>
-						</div>
-					)
-				}
 			</div>
 		</main>
 	)

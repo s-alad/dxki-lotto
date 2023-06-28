@@ -40,7 +40,7 @@
     .nextdraw, .ticketing, .balance {
         padding: 20px;
         width: 400px;
-        min-height: 400px;
+        min-height: 350px;
         background-color: #131417;
         border-radius: 8px;
         display: flex;
@@ -117,9 +117,9 @@
                 padding: 2px;
                 border-radius: 8px;
                 border: 1px solid #272b30;
-                font-size: 14px;
+                font-size: 12px;
                 width: 100%;
-                margin-bottom: 8px;
+                margin-bottom: 6px;
             }
         }
     }
@@ -132,6 +132,7 @@
 .winning {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
     .won {
         width: 1280px;
         background-color: #131417;
@@ -144,6 +145,9 @@
         .windetails {
             display: flex;
             flex-direction: column;
+            .title {
+                font-size: 24px;
+            }
         }
 
         button {
